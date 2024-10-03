@@ -116,6 +116,7 @@ createServer((req, res) => {
     for (const [header, value] of Object.entries(headers)) {
       res.setHeader(header, value);
     }
+    res.setHeader("access-control-allow-origin", "*");
     res.writeHead(status);
     if (headers['connection'] !== "keep-alive") {
       res.end(typeof body === "string" ? body : JSON.stringify(body));
