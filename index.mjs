@@ -102,6 +102,15 @@ const routes = {
       }
     },
   },
+  "OPTIONS": {
+    "/todo": () => {
+      return {
+        status: 204,
+        headers: { "access-control-allow-methods": "GET,HEAD,POST,DELETE,PATCH,PUT"},
+        body: null,
+      }
+    }
+  },
 }
 
 createServer((req, res) => {
