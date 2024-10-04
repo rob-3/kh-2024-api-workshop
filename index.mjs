@@ -106,7 +106,7 @@ const routes = {
     "/todo": () => {
       return {
         status: 204,
-        headers: { "access-control-allow-methods": "GET,HEAD,POST,DELETE,PATCH,PUT"},
+        headers: { "access-control-allow-methods": "GET,HEAD,POST,DELETE,PATCH,PUT" },
         body: null,
       }
     }
@@ -127,8 +127,8 @@ createServer((req, res) => {
     }
     res.setHeader("access-control-allow-origin", "*");
     res.writeHead(status);
-    if (headers['connection'] !== "keep-alive") {
-      res.end(typeof body === "string" ? body : JSON.stringify(body));
+    if (headers['content-type'] !== "text/event-stream") {
+      res.end((body === null || body === undefined || typeof body === "string") ? body : JSON.stringify(body));
     }
   });
 }).listen(3000);
