@@ -126,6 +126,7 @@ createServer((req, res) => {
       res.setHeader(header, value);
     }
     res.setHeader("access-control-allow-origin", "*");
+    res.setHeader("access-control-allow-headers", "*");
     res.writeHead(status);
     if (headers['content-type'] !== "text/event-stream") {
       res.end((body === null || body === undefined || typeof body === "string") ? body : JSON.stringify(body));
