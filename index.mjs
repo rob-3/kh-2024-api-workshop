@@ -43,7 +43,7 @@ const routes = {
       return {
         status: 200,
         headers: { "content-type": "application/json" },
-        body: { "todos": db.todos }
+        body: { "todos": Object.values(db.todos) }
       };
     },
     "/subscribe": (_, res) => {
